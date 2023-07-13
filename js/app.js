@@ -20,6 +20,8 @@ const shopCar = document.getElementById('shop-car');
 const modalContainer = document.getElementById('modal-container');
 
 
+
+
 let car = [];
 
 
@@ -44,10 +46,11 @@ products.forEach((product) =>{
   contents.append(buy);
 
 
-
   buy.addEventListener('click', () =>{
 
+
     const repeat = car.some((repeatProduct) =>  repeatProduct.id === product.id);
+   
     
     if(repeat){
       car.map((prod) =>{
@@ -55,7 +58,7 @@ products.forEach((product) =>{
           prod.amount ++;
         }
       })
-    }else{
+    } else{
       car.push({
         id: product.id,
         img: product.img,
@@ -66,8 +69,10 @@ products.forEach((product) =>{
       });
     }
 
-
+   
   });
+ 
+ 
 });
 
 
@@ -89,7 +94,10 @@ products.forEach((product) =>{
   modalButton.innerText = 'X';
   modalButton.className = 'modal-button';
 
-  modalButton.addEventListener('click', () => modalContainer.style.display = 'none' ) ;
+   modalButton.addEventListener('click', () => modalContainer.style.display = 'none',
+   modalContainer.style.transform = 'translateX(0%)',
+    modalContainer.style.transition = '0.8s'
+  ) ;
   modalCar.append(modalButton); 
 
 
@@ -100,10 +108,10 @@ car.forEach((product) =>{
   let carContent = document.createElement('div');
   carContent.className = 'modal-content';
   carContent.innerHTML =`
-  <img src="${product.img}" class='prueba'>
+  <img src="${product.img}" class='background-car-content'>
   <h3>${product.name}</h3>
   <p> ${product.price} $ </p>
-  <p> Amount: ${product.amount} $ </p>
+  <p> Amount: ${product.amount} </p>
 
   `;
 
@@ -115,8 +123,11 @@ car.forEach((product) =>{
   
   carContent.append(Delete);
 
-  Delete.addEventListener('click', () => deleteProduct())
+  Delete.addEventListener('click', () => deleteProduct() )
+
 });
+
+ 
   
 /**Modal Total */
 const total = car.reduce((acc, the) => acc + the.price * the.amount, 0 );
@@ -161,6 +172,7 @@ var swiper = new Swiper(".mySwiper", {
     breakpoints:{
       0:{
         slidesPerView: 1,
+        spaceBetween: 30,
       },
       650:{
         slidesPerView: 2,
