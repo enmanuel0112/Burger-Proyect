@@ -95,8 +95,10 @@ products.forEach((product) =>{
   modalButton.className = 'modal-button';
 
    modalButton.addEventListener('click', () => modalContainer.style.display = 'none',
-   modalContainer.style.transform = 'translateX(0%)',
-    modalContainer.style.transition = '0.8s'
+   modalContainer.style.transform = 'translateX(0%)' ,
+    modalContainer.style.transition = '0.8s',
+
+  
   ) ;
   modalCar.append(modalButton); 
 
@@ -112,6 +114,8 @@ car.forEach((product) =>{
   <h3>${product.name}</h3>
   <p> ${product.price} $ </p>
   <p> Amount: ${product.amount} </p>
+  <button> + </button>
+  <button> - </button>
 
   `;
 
@@ -172,13 +176,16 @@ var swiper = new Swiper(".mySwiper", {
     breakpoints:{
       0:{
         slidesPerView: 1,
-        spaceBetween: 30,
+        slidesPerGroup: 1,
+       
       },
       650:{
         slidesPerView: 2,
+        slidesPerGroup:1,
       },
       950:{
         slidesPerView: 3,
+       
       },
     },
   });
