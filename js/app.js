@@ -69,6 +69,48 @@ products.forEach((product) =>{
       });
     }
 
+      
+  /** MODAL PURCHASE */
+
+      let modalPurchase = document.createElement('div');
+    
+    modalPurchase.innerHTML = `
+      <div class='bg-modal-pruchase'>
+
+          <div class='modal-container-pruchase'>
+      
+                  <div class='modal-purchase-tittle'>
+
+                      <h3 >Thank you for purchase</h3> 
+
+                  </div>
+
+                  <img src="${product.img}" alt="img-product"  />
+                  <h3>${product.name}</h3>
+                  <p class='modal-p'> Price $ : ${product.price}</p>
+
+
+                 <p class='modal-p2' > Enjoy your food and Thank you for choosing us </p>
+          
+      
+      
+         </div>
+
+         
+      </div>
+
+        `
+
+        setTimeout( () =>{
+            modalPurchase.remove();
+        }, 3000)
+
+      menuContent.append(modalPurchase);
+
+
+  /** ------------------------------------------- */
+
+
    
   });
  
@@ -108,18 +150,21 @@ products.forEach((product) =>{
 car.forEach((product) =>{
  
   let carContent = document.createElement('div');
+  
+
   carContent.className = 'modal-content';
   carContent.innerHTML =`
   <img src="${product.img}" class='background-car-content'>
   <h3>${product.name}</h3>
   <p> ${product.price} $ </p>
   <p> Amount: ${product.amount} </p>
-  <button> + </button>
-  <button> - </button>
-
   `;
 
   modalContainer.append(carContent);
+
+
+
+
 
   let Delete = document.createElement('span');
   Delete.innerText = 'X';
